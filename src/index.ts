@@ -1,11 +1,28 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
+import { Color4, Engine, FreeCamera, Mesh, Scene, Vector3, Vector4} from '@babylonjs/core';
+import '@babylonjs/inspector';
 
-import confetti from 'canvas-confetti';
+(function(){
+    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    const engine = new Engine(canvas);
+    let scene = new Scene(engine);
+    //scene.clearColor = new Color4(0,0.1,0,1);
 
-confetti.create(document.getElementById('canvas') as HTMLCanvasElement, {
-  resize: true,
-  useWorker: true,
-})({ particleCount: 200, spread: 200 });
+    scene.createDefaultEnvironment();
+
+    scene.createDefaultSkybox();
+    scene.createDefaultLight();
+    const camera = new FreeCamera("camera1", new Vector3(0,0,-30), scene);
+    camera.attachControl(canvas, true);
+
+    const ground = Mesh.CreateGround("ground1", 6, 6, 2, scene);
+
+    const ball = Mesh.CreateSphere("ball", 20, 10, scene);
+    //ground.position = new Vector3(0,0,10);
+    //scene.debugLayer.show();
+
+
+    engine.runRenderLoop(function() {
+        scene.render();
+    });
+
+})();

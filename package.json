@@ -7,7 +7,9 @@
     "lint": "prettier --check \"src/**/*.{ts,js}\""
   },
   "dependencies": {
-    "canvas-confetti": "^1.2.0"
+    "canvas-confetti": "^1.2.0",
+    "@babylonjs/core": "^4.1.0",
+    "@babylonjs/inspector": "^4.1.0"
   },
   "devDependencies": {
     "@snowpack/plugin-typescript": "^1.1.0",
